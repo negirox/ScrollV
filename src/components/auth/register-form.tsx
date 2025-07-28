@@ -63,7 +63,7 @@ export function RegisterForm() {
       <CardHeader className="text-center">
         <div className="flex justify-center items-center gap-2 mb-4">
           <Clapperboard className="w-8 h-8 text-primary" />
-          <CardTitle className="text-3xl font-headline text-primary">ScrollVerse</CardTitle>
+          <CardTitle className="text-3xl font-headline text-primary">ScrollV</CardTitle>
         </div>
         <CardDescription>Create an account to start sharing and discovering videos.</CardDescription>
       </CardHeader>

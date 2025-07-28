@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
-import { Heart, MessageCircle, Send, MoreVertical, ShieldBan, Flag } from "lucide-react";
+import { Heart, MessageCircle, Send, MoreVertical, ShieldBan, Flag, Bookmark } from "lucide-react";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
@@ -17,6 +17,7 @@ export function VideoCard({ video }: { video: Video }) {
   const [showComments, setShowComments] = useState(false);
   const [likes, setLikes] = useState(video.likes);
   const [isLiked, setIsLiked] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleLike = () => {
     if (isLiked) {
@@ -25,6 +26,10 @@ export function VideoCard({ video }: { video: Video }) {
       setLikes(likes + 1);
     }
     setIsLiked(!isLiked);
+  };
+
+  const handleSave = () => {
+    setIsSaved(!isSaved);
   };
 
   return (
@@ -72,7 +77,7 @@ export function VideoCard({ video }: { video: Video }) {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start p-4">
-        <div className="flex items-center w-full gap-4">
+        <div className="flex items-center w-full gap-2">
           <Button variant="ghost" size="icon" onClick={handleLike}>
             <Heart className={`h-6 w-6 ${isLiked ? "text-red-500 fill-current" : ""}`} />
           </Button>
@@ -82,10 +87,14 @@ export function VideoCard({ video }: { video: Video }) {
           <Button variant="ghost" size="icon">
             <Send className="h-6 w-6" />
           </Button>
-          <div className="flex-grow text-right text-sm text-muted-foreground">
+          <div className="flex-grow" />
+          <Button variant="ghost" size="icon" onClick={handleSave}>
+            <Bookmark className={`h-6 w-6 ${isSaved ? "text-primary fill-current" : ""}`} />
+          </Button>
+        </div>
+        <div className="w-full text-sm font-semibold">
             <span>{likes.toLocaleString()} likes</span>
           </div>
-        </div>
 
         {showComments && (
           <div className="w-full mt-4">

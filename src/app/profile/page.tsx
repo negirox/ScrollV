@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { MOCK_USERS, MOCK_VIDEOS } from "@/lib/data";
-import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck } from "lucide-react";
+import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck, Bookmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,6 +13,7 @@ import {
 
 const user = MOCK_USERS[0];
 const userVideos = MOCK_VIDEOS.filter((v) => v.user.id === user.id);
+const savedVideos = MOCK_VIDEOS.slice(2, 5); // Mock data for saved videos
 
 export default function ProfilePage() {
   return (
@@ -62,9 +63,10 @@ export default function ProfilePage() {
       </div>
 
       <Tabs defaultValue="videos" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 max-w-sm mx-auto md:mx-0">
+        <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto md:mx-0">
           <TabsTrigger value="videos"><PlaySquare className="mr-2 h-4 w-4" />Videos</TabsTrigger>
           <TabsTrigger value="liked"><Heart className="mr-2 h-4 w-4" />Liked</TabsTrigger>
+          <TabsTrigger value="saved"><Bookmark className="mr-2 h-4 w-4" />Saved</TabsTrigger>
         </TabsList>
         <TabsContent value="videos">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
@@ -91,6 +93,33 @@ export default function ProfilePage() {
         <TabsContent value="liked">
             <div className="text-center py-16">
                 <p className="text-lg text-muted-foreground">Liked videos will appear here.</p>
+            </div>
+        </TabsContent>
+         <TabsContent value="saved">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                {savedVideos.map((video) => (
+                <Link href="#" key={video.id}>
+                    <div className="relative aspect-[9/16] group overflow-hidden rounded-lg shadow-lg">
+                    <Image
+                        src={video.thumbnailUrl}
+                        alt={video.description}
+                        layout="fill"
+                        objectFit="cover"
+                        data-ai-hint="user saved video"
+                    />
+                     <div className="absolute inset-0 bg-black/30" />
+                     <div className="absolute bottom-2 left-2 text-white flex items-center gap-1 text-sm font-semibold">
+                        <PlaySquare size={16} />
+                        <span>{Math.floor(video.likes / 1000)}K</span>
+                     </div>
+                    </div>
+                </Link>
+                ))}
+                 {savedVideos.length === 0 && (
+                    <div className="col-span-full text-center py-16">
+                        <p className="text-lg text-muted-foreground">You haven't saved any videos yet.</p>
+                    </div>
+                )}
             </div>
         </TabsContent>
       </Tabs>

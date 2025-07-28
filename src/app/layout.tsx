@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "ScrollVerse",
+  title: "ScrollV",
   description: "A dynamic short-form video sharing app.",
 };
 

@@ -1,4 +1,4 @@
-# **App Name**: ScrollVerse
+# **App Name**: ScrollV
 
 ## Core Features:
 
