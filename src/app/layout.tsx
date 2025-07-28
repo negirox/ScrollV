@@ -20,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={cn("font-body antialiased", inter.variable)}>
+      <body
+        className={cn("font-body antialiased", inter.variable)}
+        suppressHydrationWarning
+      >
         <SidebarProvider>
           <Sidebar>
             <AppSidebar />
