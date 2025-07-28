@@ -2,6 +2,7 @@ export type User = {
   id: string;
   name: string;
   avatarUrl: string;
+  isVerified?: boolean;
 };
 
 export type Comment = {
@@ -24,9 +25,9 @@ export type Video = {
 };
 
 export const MOCK_USERS: User[] = [
-  { id: "user-1", name: "Alex_Codes", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "user-1", name: "Alex_Codes", avatarUrl: "https://placehold.co/100x100.png", isVerified: true },
   { id: "user-2", name: "Bella_Designs", avatarUrl: "https://placehold.co/100x100.png" },
-  { id: "user-3", name: "Casey_Eats", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "user-3", name: "Casey_Eats", avatarUrl: "https://placehold.co/100x100.png", isVerified: true },
   { id: "user-4", name: "Dana_Dances", avatarUrl: "https://placehold.co/100x100.png" },
 ];
 

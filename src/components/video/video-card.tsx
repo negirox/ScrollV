@@ -6,10 +6,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
-import { Heart, MessageCircle, Send, MoreVertical } from "lucide-react";
+import { Heart, MessageCircle, Send, MoreVertical, ShieldBan, Flag } from "lucide-react";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { BadgeCheck } from "lucide-react";
 
 export function VideoCard({ video }: { video: Video }) {
   const [showComments, setShowComments] = useState(false);
@@ -33,12 +35,29 @@ export function VideoCard({ video }: { video: Video }) {
           <AvatarFallback>{video.user.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div className="flex-grow">
-          <p className="font-semibold text-card-foreground">{video.user.name}</p>
+          <div className="flex items-center gap-1">
+             <p className="font-semibold text-card-foreground">{video.user.name}</p>
+             {video.user.isVerified && <BadgeCheck className="h-5 w-5 text-blue-500" />}
+          </div>
           <p className="text-sm text-muted-foreground">{video.topic}</p>
         </div>
-        <Button variant="ghost" size="icon">
-          <MoreVertical className="h-5 w-5" />
-        </Button>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                    <MoreVertical className="h-5 w-5" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                    <Flag className="mr-2 h-4 w-4" />
+                    <span>Report Abuse</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <ShieldBan className="mr-2 h-4 w-4" />
+                    <span>Block User</span>
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
       </CardHeader>
       <CardContent className="p-0 relative aspect-[9/16]">
         <Image
@@ -79,9 +98,10 @@ export function VideoCard({ video }: { video: Video }) {
                     <AvatarFallback>{comment.user.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="flex-grow">
-                    <p>
-                      <Link href={`/profile/${comment.user.id}`} className="font-semibold hover:underline">
+                     <p>
+                      <Link href={`/profile/${comment.user.id}`} className="font-semibold hover:underline inline-flex items-center gap-1">
                         {comment.user.name}
+                        {comment.user.isVerified && <BadgeCheck className="h-4 w-4 text-blue-500" />}
                       </Link>{" "}
                       <span className="text-muted-foreground">{comment.text}</span>
                     </p>

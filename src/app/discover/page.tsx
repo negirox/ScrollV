@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { MOCK_VIDEOS } from "@/lib/data";
-import { Search } from "lucide-react";
+import { Search, Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,9 +25,9 @@ export default function DiscoverPage() {
               <Image
                 src={video.thumbnailUrl}
                 alt={video.description}
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-300 group-hover:scale-110"
+                width={576}
+                height={1024}
+                className="transition-transform duration-300 group-hover:scale-110 object-cover w-full h-full"
                 data-ai-hint="trending video"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />

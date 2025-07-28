@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { MOCK_USERS, MOCK_VIDEOS } from "@/lib/data";
-import { Settings, UserPlus, Heart, PlaySquare } from "lucide-react";
+import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -23,7 +23,10 @@ export default function ProfilePage() {
           <AvatarFallback className="text-4xl">{user.name.slice(0, 2)}</AvatarFallback>
         </Avatar>
         <div className="flex-grow text-center md:text-left">
-          <h1 className="text-3xl font-bold font-headline">{user.name}</h1>
+          <div className="flex items-center gap-2 justify-center md:justify-start">
+            <h1 className="text-3xl font-bold font-headline">{user.name}</h1>
+            {user.isVerified && <BadgeCheck className="h-7 w-7 text-blue-500" />}
+          </div>
           <p className="text-muted-foreground mb-4">@{user.name.toLowerCase()}</p>
           <p className="max-w-prose mb-4">
             Full-stack developer sharing my coding journey. Join me for tips, tutorials, and tech talk! 🚀
@@ -33,6 +36,9 @@ export default function ProfilePage() {
               <UserPlus className="mr-2 h-4 w-4" /> Follow
             </Button>
             <Button variant="outline">Message</Button>
+            <Button variant="secondary">
+                <ShieldBan className="mr-2 h-4 w-4" /> Block
+            </Button>
             <Button variant="ghost" size="icon">
               <Settings />
             </Button>
