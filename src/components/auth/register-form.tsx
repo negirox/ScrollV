@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +13,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -34,7 +36,10 @@ const formSchema = z
     }),
     password: z.string().min(8, {
       message: "Password must be at least 8 characters.",
-    }),
+    }).regex(new RegExp(".*[A-Z].*"), "Must contain one uppercase character")
+      .regex(new RegExp(".*[a-z].*"), "Must contain one lowercase character")
+      .regex(new RegExp(".*\\d.*"), "Must contain one number")
+      .regex(new RegExp(".*[`~<>?,./!@#$%^&*()\\-_+=\"'|{}\\[\\];:\\\\].*"), "Must contain one special character"),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -105,6 +110,9 @@ export function RegisterForm() {
                   <FormControl>
                     <Input type="password" placeholder="••••••••" {...field} />
                   </FormControl>
+                   <FormDescription>
+                    Password must be at least 8 characters and contain one uppercase, one lowercase, one number and one special character.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
