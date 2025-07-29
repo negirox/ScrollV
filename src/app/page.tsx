@@ -5,6 +5,8 @@ import { VideoCard } from "@/components/video/video-card";
 import { MOCK_VIDEOS, type Video } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { StoryBar } from "@/components/stories/story-bar";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   const [videos, setVideos] = useState<Video[]>(MOCK_VIDEOS.slice(0, 3));
@@ -47,12 +49,10 @@ export default function Home() {
 
 
   return (
-    <div className="flex justify-center py-8 px-4">
-      <div className="w-full max-w-2xl space-y-8">
-        <h1 className="text-4xl font-bold text-center text-primary font-headline">
-          For You
-        </h1>
-        <div className="space-y-6">
+    <div className="flex justify-center">
+      <div className="w-full max-w-2xl">
+        <StoryBar />
+        <div className="space-y-6 py-8 px-4">
           {videos.map((video) => (
             <VideoCard key={video.id} video={video} />
           ))}

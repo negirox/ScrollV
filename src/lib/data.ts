@@ -12,6 +12,13 @@ export type Comment = {
   timestamp: string;
 };
 
+export type Story = {
+  id: string;
+  user: User;
+  imageUrl: string;
+  viewed: boolean;
+};
+
 export type Video = {
   id: string;
   user: User;
@@ -29,6 +36,17 @@ export const MOCK_USERS: User[] = [
   { id: "user-2", name: "Bella_Designs", avatarUrl: "https://placehold.co/100x100.png" },
   { id: "user-3", name: "Casey_Eats", avatarUrl: "https://placehold.co/100x100.png", isVerified: true },
   { id: "user-4", name: "Dana_Dances", avatarUrl: "https://placehold.co/100x100.png" },
+];
+
+export const MOCK_STORIES: Story[] = [
+    { id: "story-1", user: MOCK_USERS[1], imageUrl: "https://placehold.co/1080x1920.png", viewed: false },
+    { id: "story-2", user: MOCK_USERS[2], imageUrl: "https://placehold.co/1080x1920.png", viewed: false },
+    { id: "story-3", user: MOCK_USERS[3], imageUrl: "https://placehold.co/1080x1920.png", viewed: true },
+    { id: "story-4", user: MOCK_USERS[0], imageUrl: "https://placehold.co/1080x1920.png", viewed: true },
+     { id: "story-5", user: MOCK_USERS[1], imageUrl: "https://placehold.co/1080x1920.png", viewed: false },
+    { id: "story-6", user: MOCK_USERS[2], imageUrl: "https://placehold.co/1080x1920.png", viewed: false },
+    { id: "story-7", user: MOCK_USERS[3], imageUrl: "https://placehold.co/1080x1920.png", viewed: true },
+    { id: "story-8", user: MOCK_USERS[0], imageUrl: "https://placehold.co/1080x1920.png", viewed: true },
 ];
 
 export const MOCK_COMMENTS: Comment[] = [
