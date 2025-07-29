@@ -60,7 +60,10 @@ export function RegisterForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    // Handle registration logic here
+    // Handle registration logic here.
+    // In a real application, this would make a POST request to a secure API endpoint.
+    // The backend (.NET Core in this case) would be responsible for hashing the password before storing it.
+    // e.g., fetch('https://api.scrollv.com/register', { method: 'POST', body: JSON.stringify(values) })
   }
 
   return (
@@ -74,7 +77,7 @@ export function RegisterForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" action="https://api.example.com/register" method="POST">
             <FormField
               control={form.control}
               name="username"
@@ -82,7 +85,7 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="your_username" {...field} />
+                    <Input placeholder="your_username" {...field} autoComplete="username" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -95,7 +98,7 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="you@example.com" {...field} />
+                    <Input placeholder="you@example.com" {...field} autoComplete="email" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -108,7 +111,7 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" {...field} />
+                    <Input type="password" placeholder="••••••••" {...field} autoComplete="new-password" />
                   </FormControl>
                    <FormDescription>
                     Password must be at least 8 characters and contain one uppercase, one lowercase, one number and one special character.
@@ -124,7 +127,7 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" {...field} />
+                    <Input type="password" placeholder="••••••••" {...field} autoComplete="new-password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

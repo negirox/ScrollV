@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -46,7 +47,9 @@ export function LoginForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    // Handle login logic here
+    // Handle login logic here.
+    // In a real application, this would make a POST request to a secure API endpoint.
+    // e.g., fetch('https://api.scrollv.com/login', { method: 'POST', body: JSON.stringify(values) })
     router.push("/");
   }
 
@@ -61,7 +64,7 @@ export function LoginForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" action="https://api.example.com/login" method="POST">
             <FormField
               control={form.control}
               name="email"
@@ -69,7 +72,7 @@ export function LoginForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="you@example.com" {...field} />
+                    <Input placeholder="you@example.com" {...field} autoComplete="email" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,7 +85,7 @@ export function LoginForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" {...field} />
+                    <Input type="password" placeholder="••••••••" {...field} autoComplete="current-password" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
