@@ -32,6 +32,21 @@ export type Video = {
   topic: string;
 };
 
+export type Message = {
+  id: string;
+  sender: User;
+  text: string;
+  timestamp: string;
+};
+
+export type Conversation = {
+  id: string;
+  participants: User[];
+  messages: Message[];
+  lastMessage: Message;
+};
+
+
 export const MOCK_USERS: User[] = [
   { id: "user-1", name: "Alex_Codes", avatarUrl: "https://placehold.co/100x100.png", isVerified: true, bio: "Full-stack developer sharing my coding journey. Join me for tips, tutorials, and tech talk! 🚀" },
   { id: "user-2", name: "Bella_Designs", avatarUrl: "https://placehold.co/100x100.png", bio: "UI/UX Designer creating beautiful and intuitive interfaces. Passionate about clean design and user-centered solutions." },
@@ -141,4 +156,37 @@ export const MOCK_VIDEOS: Video[] = [
     shares: 1200,
     topic: "Dance Choreography",
   },
+];
+
+const currentUser = MOCK_USERS[0];
+
+const mockMessages: Message[] = [
+  { id: 'msg-1', sender: MOCK_USERS[1], text: 'Hey, I loved your latest video! The editing was top-notch.', timestamp: '10:30 AM' },
+  { id: 'msg-2', sender: currentUser, text: 'Thanks so much, Bella! I really appreciate you watching.', timestamp: '10:31 AM' },
+  { id: 'msg-3', sender: MOCK_USERS[1], text: 'Of course! I was wondering if you\'d be open to a design collab sometime?', timestamp: '10:32 AM' },
+  { id: 'msg-4', sender: currentUser, text: 'That sounds amazing! I\'d love that. Let\'s chat more about it this week.', timestamp: '10:35 AM' },
+  { id: 'msg-5', sender: MOCK_USERS[2], text: 'Just saw your carbonara video, I\'m making it tonight!', timestamp: 'Yesterday' },
+  { id: 'msg-6', sender: currentUser, text: 'Awesome, let me know how it turns out!', timestamp: 'Yesterday' },
+  { id: 'msg-7', sender: MOCK_USERS[3], text: 'Your dance videos are so inspiring!', timestamp: '2 days ago' },
+];
+
+export const MOCK_CONVERSATIONS: Conversation[] = [
+    {
+        id: 'convo-1',
+        participants: [currentUser, MOCK_USERS[1]],
+        messages: mockMessages.slice(0, 4),
+        lastMessage: mockMessages[3],
+    },
+    {
+        id: 'convo-2',
+        participants: [currentUser, MOCK_USERS[2]],
+        messages: mockMessages.slice(4, 6),
+        lastMessage: mockMessages[5],
+    },
+    {
+        id: 'convo-3',
+        participants: [currentUser, MOCK_USERS[3]],
+        messages: [mockMessages[6]],
+        lastMessage: mockMessages[6],
+    },
 ];

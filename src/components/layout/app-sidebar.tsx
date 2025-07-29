@@ -9,6 +9,7 @@ import {
   User,
   LogIn,
   Clapperboard,
+  MessageSquare,
 } from "lucide-react";
 import {
   SidebarHeader,
@@ -24,6 +25,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const menuItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/discover", label: "Discover", icon: Compass },
+  { href: "/dm", label: "Messages", icon: MessageSquare },
   { href: "/upload", label: "Upload", icon: PlusSquare },
   { href: "/profile", label: "Profile", icon: User },
 ];
@@ -45,7 +47,7 @@ export function AppSidebar() {
             <SidebarMenuItem key={item.label}>
               <SidebarMenuButton
                 asChild
-                isActive={pathname === item.href}
+                isActive={pathname.startsWith(item.href) && (item.href === "/" ? pathname === "/" : true)}
                 tooltip={item.label}
               >
                 <Link href={item.href}>
