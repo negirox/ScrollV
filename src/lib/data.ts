@@ -52,6 +52,7 @@ export const MOCK_USERS: User[] = [
   { id: "user-2", name: "Bella_Designs", avatarUrl: "https://placehold.co/100x100.png", bio: "UI/UX Designer creating beautiful and intuitive interfaces. Passionate about clean design and user-centered solutions." },
   { id: "user-3", name: "Casey_Eats", avatarUrl: "https://placehold.co/100x100.png", isVerified: true, bio: "Food blogger and recipe developer on a mission to find the best eats in town. Follow me for delicious discoveries!" },
   { id: "user-4", name: "Dana_Dances", avatarUrl: "https://placehold.co/100x100.png", bio: "Professional dancer and choreographer. Sharing my love for movement and expression through dance." },
+  { id: "user-5", name: "Eli_Streams", avatarUrl: "https://placehold.co/100x100.png", isVerified: true, bio: "Live streamer playing the latest games and chatting with my awesome community. Tune in for the fun!" },
 ];
 
 export const MOCK_STORIES: Story[] = [
@@ -83,6 +84,12 @@ export const MOCK_COMMENTS: Comment[] = [
     user: MOCK_USERS[3],
     text: "So talented! Keep it up!",
     timestamp: "30m ago",
+  },
+    {
+    id: "comment-4",
+    user: MOCK_USERS[4],
+    text: "Welcome to the stream everyone!",
+    timestamp: "1m ago",
   },
 ];
 

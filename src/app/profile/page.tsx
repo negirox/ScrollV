@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { MOCK_USERS, MOCK_VIDEOS, MOCK_STORIES } from "@/lib/data";
-import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck, Bookmark, PlusCircle, MessageSquare, Clapperboard } from "lucide-react";
+import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck, Bookmark, PlusCircle, MessageSquare, Clapperboard, Podcast } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -40,6 +40,11 @@ export default function ProfilePage() {
             <Button variant="outline" asChild>
                 <Link href="/dm/convo-1">
                     <MessageSquare className="mr-2 h-4 w-4" /> Message
+                </Link>
+            </Button>
+            <Button variant="destructive" asChild>
+                <Link href={`/live/${user.name.toLowerCase().replace(' ', '_')}`}>
+                    <Podcast className="mr-2 h-4 w-4" /> Go Live
                 </Link>
             </Button>
             <Button variant="secondary">
