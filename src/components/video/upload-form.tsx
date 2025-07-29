@@ -19,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { UploadCloud, Wand2, FileVideo, Loader2, Film } from "lucide-react";
+import { UploadCloud, Wand2, FileVideo, Loader2, Film, Music, Mic, Stethoscope, HelpCircle, PollHorizontal } from "lucide-react";
 import { generateVideoCaption } from "@/ai/flows/generate-video-caption";
 import { useToast } from "@/hooks/use-toast";
 import { VideoFilters } from "./video-filters";
@@ -183,6 +183,7 @@ export function UploadForm() {
                 />
 
                 {videoPreview && (
+                  <>
                     <div className="space-y-4">
                         <div className="flex items-center gap-2">
                             <Film className="text-muted-foreground"/>
@@ -194,6 +195,19 @@ export function UploadForm() {
                             onSelectFilter={setSelectedFilter}
                         />
                     </div>
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-medium">Creative Tools</h3>
+                         <Button type="button" variant="outline" className="w-full justify-start">
+                            <Music className="mr-2 h-4 w-4" /> Add Music
+                        </Button>
+                        <div className="grid grid-cols-2 gap-2">
+                            <Button type="button" variant="outline"><PollHorizontal className="mr-2 h-4 w-4" />Poll</Button>
+                            <Button type="button" variant="outline"><HelpCircle className="mr-2 h-4 w-4" />Quiz</Button>
+                            <Button type="button" variant="outline"><Stethoscope className="mr-2 h-4 w-4" />Sticker</Button>
+                            <Button type="button" variant="outline"><Mic className="mr-2 h-4 w-4" />Voiceover</Button>
+                        </div>
+                    </div>
+                  </>
                 )}
               </div>
 
