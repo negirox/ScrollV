@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { MOCK_USERS, MOCK_VIDEOS, MOCK_STORIES } from "@/lib/data";
-import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck, Bookmark, PlusCircle, MessageSquare } from "lucide-react";
+import { Settings, UserPlus, Heart, PlaySquare, ShieldBan, BadgeCheck, Bookmark, PlusCircle, MessageSquare, Clapperboard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -91,13 +91,13 @@ export default function ProfilePage() {
       </div>
 
 
-      <Tabs defaultValue="videos" className="w-full">
+      <Tabs defaultValue="reels" className="w-full">
         <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto md:mx-0">
-          <TabsTrigger value="videos"><PlaySquare className="mr-2 h-4 w-4" />Videos</TabsTrigger>
+          <TabsTrigger value="reels"><Clapperboard className="mr-2 h-4 w-4" />Reels</TabsTrigger>
           <TabsTrigger value="liked"><Heart className="mr-2 h-4 w-4" />Liked</TabsTrigger>
           <TabsTrigger value="saved"><Bookmark className="mr-2 h-4 w-4" />Saved</TabsTrigger>
         </TabsList>
-        <TabsContent value="videos">
+        <TabsContent value="reels">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                 {userVideos.map((video) => (
                 <Link href="#" key={video.id}>
