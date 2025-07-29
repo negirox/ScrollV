@@ -71,3 +71,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Video Filters */
+.filter-none { filter: none; }
+.filter-grayscale { filter: grayscale(100%); }
+.filter-sepia { filter: sepia(100%); }
+.filter-invert { filter: invert(100%); }
+.filter-contrast { filter: contrast(150%); }
+.filter-vintage { filter: sepia(60%) contrast(110%) brightness(90%) saturate(120%); }
+.filter-sunset { filter: sepia(30%) hue-rotate(-20deg) saturate(160%); }
+.filter-dreamy { filter: saturate(180%) contrast(120%) brightness(80%); }
