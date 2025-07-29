@@ -3,6 +3,7 @@ export type User = {
   name: string;
   avatarUrl: string;
   isVerified?: boolean;
+  bio?: string;
 };
 
 export type Comment = {
@@ -32,10 +33,10 @@ export type Video = {
 };
 
 export const MOCK_USERS: User[] = [
-  { id: "user-1", name: "Alex_Codes", avatarUrl: "https://placehold.co/100x100.png", isVerified: true },
-  { id: "user-2", name: "Bella_Designs", avatarUrl: "https://placehold.co/100x100.png" },
-  { id: "user-3", name: "Casey_Eats", avatarUrl: "https://placehold.co/100x100.png", isVerified: true },
-  { id: "user-4", name: "Dana_Dances", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "user-1", name: "Alex_Codes", avatarUrl: "https://placehold.co/100x100.png", isVerified: true, bio: "Full-stack developer sharing my coding journey. Join me for tips, tutorials, and tech talk! 🚀" },
+  { id: "user-2", name: "Bella_Designs", avatarUrl: "https://placehold.co/100x100.png", bio: "UI/UX Designer creating beautiful and intuitive interfaces. Passionate about clean design and user-centered solutions." },
+  { id: "user-3", name: "Casey_Eats", avatarUrl: "https://placehold.co/100x100.png", isVerified: true, bio: "Food blogger and recipe developer on a mission to find the best eats in town. Follow me for delicious discoveries!" },
+  { id: "user-4", name: "Dana_Dances", avatarUrl: "https://placehold.co/100x100.png", bio: "Professional dancer and choreographer. Sharing my love for movement and expression through dance." },
 ];
 
 export const MOCK_STORIES: Story[] = [
